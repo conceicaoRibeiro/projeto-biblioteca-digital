@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="m-0">Livros</h2>
+
+  <a routerLink="/livros/novo" class="btn btn-success btn-sm px-3">
+    + Novo livro
+  </a>
+</div>
+
+<div class="mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Buscar por título..."
+    (input)="buscar($event)">
+</div>
+
+<table class="table table-striped table-hover align-middle">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Ano</th>
+      <th>Gênero</th>
+      <th style="width: 180px;">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let livro of livros()">
+      <td>{{ livro.titulo }}</td>
+      <td>{{ livro.autor }}</td>
+      <td>{{ livro.ano }}</td>
+      <td>{{ livro.genero }}</td>
+      <td>
+        <a
+          class="btn btn-warning btn-sm me-2"
+          [routerLink]="['/livros/editar', livro.id]">
+          Editar
+        </a>
+
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          (click)="excluir(livro.id!)">
+          Excluir
+        </button>
+      </td>
+    </tr>
+
+    <tr *ngIf="livros().length === 0">
+      <td colspan="5" class="text-center">
+        Nenhum livro encontrado.
+      </td>
+    </tr>
+  </tbody>
+</table>

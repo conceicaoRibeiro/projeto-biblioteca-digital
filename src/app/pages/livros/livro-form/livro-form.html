@@ -1,0 +1,50 @@
+<h2>{{ editando ? 'Editar Livro' : 'Novo Livro' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="salvar()" class="mt-3">
+  <div class="mb-3">
+    <label class="form-label">Título</label>
+    <input class="form-control" formControlName="titulo">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Autor</label>
+    <input class="form-control" formControlName="autor">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Gênero</label>
+    <input class="form-control" formControlName="genero">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Ano</label>
+    <input type="number" class="form-control" formControlName="ano">
+  </div>
+
+  <button class="btn btn-primary" type="submit">Salvar</button>
+  <a routerLink="/livros" class="btn btn-secondary ms-2">Voltar</a>
+</form>
+
+<div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="mostrarModalErro">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Corrija os campos</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="fecharModalErro()"></button>
+      </div>
+
+      <div class="modal-body">
+        <p class="mb-2">Encontramos alguns problemas:</p>
+        <ul class="mb-0">
+          <li *ngFor="let msg of mensagensErro">{{ msg }}</li>
+        </ul>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="fecharModalErro()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show" *ngIf="mostrarModalErro"></div>
