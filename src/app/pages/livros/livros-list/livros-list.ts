@@ -28,7 +28,11 @@ export class LivrosList implements OnInit {
         this.todosOsLivros.set(lista);
         this.livros.set(lista);
       },
-      error: (erro) => console.error('Erro ao carregar livros:', erro)
+       error: (erro) => {
+       console.error('Erro ao carregar livros:', erro);
+       this.livros.set([]);
+  }
+    
     });
   }
 

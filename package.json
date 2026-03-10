@@ -25,6 +25,7 @@
     "@angular/build": "^21.2.1",
     "@angular/cli": "^21.2.1",
     "@angular/compiler-cli": "^21.2.1",
+    "angular-cli-ghpages": "^3.0.2",
     "json-server": "^1.0.0-beta.12",
     "typescript": "^5.9.3"
   }
